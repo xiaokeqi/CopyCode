@@ -10,7 +10,13 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:CopyCode.helloWorld"
+				"*",
+        "onCommand:CopyCode.helloWorld",
+				"onCommand:CopyCode.newJsFile",
+				"onCommand:CopyCode.newCssFile",
+				"onCommand:CopyCode.newJsSnipcode",
+				"onCommand:CopyCode.newCssSnipcode"
+
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -18,9 +24,69 @@
 			{
 				"command": "CopyCode.helloWorld",
 				"title": "Hello World"
+			},
+			{
+				"command": "CopyCode.newJsFile",
+				"title": "cc-存储为js模板"
+			},
+			{
+				"command": "CopyCode.newCssFile",
+				"title": "cc-存储为css模板"
+			},
+			{
+				"command": "CopyCode.newJsSnipcode",
+				"title": "cc-存储为js片段"
+			},
+			{
+				"command": "CopyCode.newCssSnipcode",
+				"title": "cc-存储为css片段"
 			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+          "when": "resourceLangId == javascript",
+          "command": "CopyCode.newJsFile",
+          "group": "1_modification"
+        },
+				{
+          "when": "resourceLangId == css",
+          "command": "CopyCode.newCssFile",
+          "group": "1_modification"
+        }
+			],
+			"editor/context": [
+				{
+          "command": "CopyCode.newJsSnipcode",
+          "group": "1_modification"
+        },
+				{
+          "command": "CopyCode.newCssSnipcode",
+          "group": "1_modification"
+        }
+			]
+		},
+		"languages": [
+			{
+				"id": "javascript",
+				"extensions": [
+					".js",
+					".jsx",
+					".ts"
+				]
+			},
+			{
+				"id": "css",
+				"extensions": [
+					".css",
+					".less",
+					".scss"
+				]
+			}
+	
 		]
 	},
+	
 	"scripts": {
 		"vscode:prepublish": "yarn run package",
 		"compile": "webpack",
