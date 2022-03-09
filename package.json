@@ -1,5 +1,5 @@
 {
-  "name": "CopyCode",
+	"name": "CopyCode",
 	"displayName": "CopyCode",
 	"description": "个性化代码生成工具",
 	"version": "0.0.1",
@@ -9,22 +9,17 @@
 	"categories": [
 		"Other"
 	],
+	"publisher": "lidandan",
 	"activationEvents": [
-				"*",
-        "onCommand:CopyCode.helloWorld",
-				"onCommand:CopyCode.newJsFile",
-				"onCommand:CopyCode.newCssFile",
-				"onCommand:CopyCode.newJsSnipcode",
-				"onCommand:CopyCode.newCssSnipcode"
-
+		"*",
+		"onCommand:CopyCode.newJsFile",
+		"onCommand:CopyCode.newCssFile",
+		"onCommand:CopyCode.newJsSnipcode",
+		"onCommand:CopyCode.newCssSnipcode"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
-			{
-				"command": "CopyCode.helloWorld",
-				"title": "Hello World"
-			},
 			{
 				"command": "CopyCode.newJsFile",
 				"title": "cc-存储为js模板"
@@ -45,25 +40,25 @@
 		"menus": {
 			"explorer/context": [
 				{
-          "when": "resourceLangId == javascript",
-          "command": "CopyCode.newJsFile",
-          "group": "1_modification"
-        },
+					"when": "resourceLangId == javascript",
+					"command": "CopyCode.newJsFile",
+					"group": "1_modification"
+				},
 				{
-          "when": "resourceLangId == css",
-          "command": "CopyCode.newCssFile",
-          "group": "1_modification"
-        }
+					"when": "resourceLangId == css",
+					"command": "CopyCode.newCssFile",
+					"group": "1_modification"
+				}
 			],
 			"editor/context": [
 				{
-          "command": "CopyCode.newJsSnipcode",
-          "group": "1_modification"
-        },
+					"command": "CopyCode.newJsSnipcode",
+					"group": "1_modification"
+				},
 				{
-          "command": "CopyCode.newCssSnipcode",
-          "group": "1_modification"
-        }
+					"command": "CopyCode.newCssSnipcode",
+					"group": "1_modification"
+				}
 			]
 		},
 		"languages": [
@@ -83,10 +78,8 @@
 					".scss"
 				]
 			}
-	
 		]
 	},
-	
 	"scripts": {
 		"vscode:prepublish": "yarn run package",
 		"compile": "webpack",
