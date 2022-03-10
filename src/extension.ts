@@ -8,29 +8,29 @@ export function activate(context: vscode.ExtensionContext) {
 	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "CopyCode" is now active!');
+	console.log('Congratulations, your extension "CopyPaste" is now active!');
 	let currentEditor: any = vscode.window.activeTextEditor
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let newJsTemplate = vscode.commands.registerCommand('CopyCode.newJsFile',async (uri) => {
+	let newJsTemplate = vscode.commands.registerCommand('CopyPaste.newJsFile',async (uri) => {
 		newJsFile(uri)
 	});
 
-	let newCssTemplate = vscode.commands.registerCommand('CopyCode.newCssFile', () => {
-		vscode.window.showInformationMessage('newCssFile from CopyCode!');
+	let newCssTemplate = vscode.commands.registerCommand('CopyPaste.newCssFile', () => {
+		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
 	});
-	let newCssSnipcode = vscode.commands.registerCommand('CopyCode.newCssSnipcode', (textEditor, edit) => {
+	let newCssSnipcode = vscode.commands.registerCommand('CopyPaste.newCssSnipcode', (textEditor, edit) => {
 		// console.log(textEditor.document)
 		console.log(currentEditor.document.getText(new vscode.Range(currentEditor.selection.start, currentEditor.selection.end)))
 		// console.log(textEditor.document.getText()
 		// vscode.window.showInformationMessage(currentEditor.selection)
-		vscode.window.showInformationMessage('newCssFile from CopyCode!');
+		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
 	});
-	let newJsSnipcode = vscode.commands.registerCommand('CopyCode.newJsSnipcode', () => {
+	let newJsSnipcode = vscode.commands.registerCommand('CopyPaste.newJsSnipcode', () => {
 		// vscode.window.showInformationMessage(currentEditor.selection)
-		vscode.window.showInformationMessage('newCssFile from CopyCode!');
+		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
 	});
 	context.subscriptions.push(newCssSnipcode);
 	context.subscriptions.push(newJsSnipcode);

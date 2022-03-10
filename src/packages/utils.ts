@@ -11,7 +11,7 @@ const config = require('./config.json')
 export function newTemplate(filename: string, source:string) {
   const extensionPlugin = vscode.extensions.getExtension(config.extensionPath)
   if(!extensionPlugin) {
-    vscode.window.showErrorMessage('您没有安装CopyCode,请去应用商店安装')
+    vscode.window.showErrorMessage('您没有安装CopyPaste,请去应用商店安装')
     return
   }
   const { extensionPath } = extensionPlugin
@@ -21,7 +21,7 @@ export function newTemplate(filename: string, source:string) {
   }
   const ext = path.extname(source)
   let sourceContent = fs.readFileSync(source)
-  // 若直接在fs中使用模板字符串变量赋值，创建不到.copycode文件夹中
+  // 若直接在fs中使用模板字符串变量赋值，创建不到.copypaste文件夹中
   const templatePath = `${templateDirPath}/${filename}.${ext}`
   if(isExist(templateDirPath)) {
     vscode.window.showWarningMessage('已存在同名模板，是否覆盖', { modal: true }, 'yes').then(pick =>{

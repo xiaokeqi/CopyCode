@@ -1,6 +1,6 @@
 # Change Log
 
-All notable changes to the "CopyCode" extension will be documented in this file.
+All notable changes to the "CopyPaste" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 

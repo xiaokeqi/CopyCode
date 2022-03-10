@@ -1,7 +1,7 @@
 {
-	"name": "CopyCode",
-	"displayName": "CopyCode",
-	"description": "个性化代码生成工具",
+	"name": "CopyPaste",
+	"displayName": "CopyPaste",
+	"description": "个性化代码复制粘贴工具",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.65.0"
@@ -12,28 +12,28 @@
 	"publisher": "lidandan",
 	"activationEvents": [
 		"*",
-		"onCommand:CopyCode.newJsFile",
-		"onCommand:CopyCode.newCssFile",
-		"onCommand:CopyCode.newJsSnipcode",
-		"onCommand:CopyCode.newCssSnipcode"
+		"onCommand:CopyPaste.newJsFile",
+		"onCommand:CopyPaste.newCssFile",
+		"onCommand:CopyPaste.newJsSnipcode",
+		"onCommand:CopyPaste.newCssSnipcode"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "CopyCode.newJsFile",
+				"command": "CopyPaste.newJsFile",
 				"title": "cc-存储为js模板"
 			},
 			{
-				"command": "CopyCode.newCssFile",
+				"command": "CopyPaste.newCssFile",
 				"title": "cc-存储为css模板"
 			},
 			{
-				"command": "CopyCode.newJsSnipcode",
+				"command": "CopyPaste.newJsSnipcode",
 				"title": "cc-存储为js片段"
 			},
 			{
-				"command": "CopyCode.newCssSnipcode",
+				"command": "CopyPaste.newCssSnipcode",
 				"title": "cc-存储为css片段"
 			}
 		],
@@ -41,22 +41,22 @@
 			"explorer/context": [
 				{
 					"when": "resourceLangId == javascript",
-					"command": "CopyCode.newJsFile",
+					"command": "CopyPaste.newJsFile",
 					"group": "1_modification"
 				},
 				{
 					"when": "resourceLangId == css",
-					"command": "CopyCode.newCssFile",
+					"command": "CopyPaste.newCssFile",
 					"group": "1_modification"
 				}
 			],
 			"editor/context": [
 				{
-					"command": "CopyCode.newJsSnipcode",
+					"command": "CopyPaste.newJsSnipcode",
 					"group": "1_modification"
 				},
 				{
-					"command": "CopyCode.newCssSnipcode",
+					"command": "CopyPaste.newCssSnipcode",
 					"group": "1_modification"
 				}
 			]
