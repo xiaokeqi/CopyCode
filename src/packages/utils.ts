@@ -15,7 +15,7 @@ export function newTemplate(filename: string, source:string) {
     return
   }
   const { extensionPath } = extensionPlugin
-  const templateDirPath = `${extensionPath}/.copycode`
+  const templateDirPath = `${extensionPath}/.copypaste`
   if(!isExist(templateDirPath)) {
     cp.execSync(`mkdir -p ${templateDirPath}`)
   }
