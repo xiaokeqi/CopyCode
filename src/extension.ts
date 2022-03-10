@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import newJsFile from './packages/newJsFile';
+import newCssFile from './packages/newCssFile'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -18,8 +19,9 @@ export function activate(context: vscode.ExtensionContext) {
 		newJsFile(uri)
 	});
 
-	let newCssTemplate = vscode.commands.registerCommand('CopyPaste.newCssFile', () => {
-		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
+	let newCssTemplate = vscode.commands.registerCommand('CopyPaste.newCssFile', (uri) => {
+		newCssFile(uri)
+
 	});
 	let newCssSnipcode = vscode.commands.registerCommand('CopyPaste.newCssSnipcode', (textEditor, edit) => {
 		// console.log(textEditor.document)

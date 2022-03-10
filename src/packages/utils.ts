@@ -32,7 +32,7 @@ export function newTemplate(filename: string, source:string) {
   function newSuccess() {
     fs.writeFileSync(templatePath, sourceContent, 'utf-8')
     dbTransaction('add', `${filename}${ext}`)
-    vscode.window.showInformationMessage("Success")
+    vscode.window.showInformationMessage(`${filename}模板保存成功！！！`)
   }
 
 }
@@ -71,7 +71,12 @@ export function dbTransaction(type: string, key: string) {
   const dbPath = `${templateDirPath}/${config.dbFile}`
   let dbObj: any = {}
   if(isExist(dbPath)) {
-    dbObj = JSON.parse(require(dbPath))
+    const dbData = require(dbPath)
+    try {
+      dbObj = typeof dbData === 'object'? dbData : JSON.parse(dbData)
+    } catch (error) {
+      vscode.window.showErrorMessage('数据解析失败')
+    }
   }
   switch(type) {
     // 新增模板
