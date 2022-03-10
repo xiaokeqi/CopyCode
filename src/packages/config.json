@@ -1,3 +1,5 @@
 {
-  "extensionPath": "lidandan.CopyPaste"
+  "extensionPath": "lidandan.CopyPaste",
+  "cacheDir": ".copypaste",
+  "dbFile": "db.json"
 }
