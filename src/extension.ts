@@ -2,7 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import newJsFile from './packages/newJsFile';
-import newCssFile from './packages/newCssFile'
+import newCssFile from './packages/newCssFile';
+import newSnippet from './packages/newSnippet'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -23,19 +24,10 @@ export function activate(context: vscode.ExtensionContext) {
 		newCssFile(uri)
 
 	});
-	let newCssSnipcode = vscode.commands.registerCommand('CopyPaste.newCssSnipcode', (textEditor, edit) => {
-		// console.log(textEditor.document)
-		console.log(currentEditor.document.getText(new vscode.Range(currentEditor.selection.start, currentEditor.selection.end)))
-		// console.log(textEditor.document.getText()
-		// vscode.window.showInformationMessage(currentEditor.selection)
-		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
+	let newMainSnipcode = vscode.commands.registerCommand('CopyPaste.newSnippet', () => {
+		newSnippet()
 	});
-	let newJsSnipcode = vscode.commands.registerCommand('CopyPaste.newJsSnipcode', () => {
-		// vscode.window.showInformationMessage(currentEditor.selection)
-		vscode.window.showInformationMessage('newCssFile from CopyPaste!');
-	});
-	context.subscriptions.push(newCssSnipcode);
-	context.subscriptions.push(newJsSnipcode);
+	context.subscriptions.push(newMainSnipcode);
 	context.subscriptions.push(newCssTemplate);
 	context.subscriptions.push(newJsTemplate);
 }

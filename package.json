@@ -14,8 +14,7 @@
 		"*",
 		"onCommand:CopyPaste.newJsFile",
 		"onCommand:CopyPaste.newCssFile",
-		"onCommand:CopyPaste.newJsSnipcode",
-		"onCommand:CopyPaste.newCssSnipcode"
+		"onCommand:CopyPaste.newSnippet"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -29,12 +28,8 @@
 				"title": "cc-存储为css模板"
 			},
 			{
-				"command": "CopyPaste.newJsSnipcode",
-				"title": "cc-存储为js片段"
-			},
-			{
-				"command": "CopyPaste.newCssSnipcode",
-				"title": "cc-存储为css片段"
+				"command": "CopyPaste.newSnippet",
+				"title": "cc-存储为代码片段"
 			}
 		],
 		"menus": {
@@ -52,11 +47,7 @@
 			],
 			"editor/context": [
 				{
-					"command": "CopyPaste.newJsSnipcode",
-					"group": "1_modification"
-				},
-				{
-					"command": "CopyPaste.newCssSnipcode",
+					"command": "CopyPaste.newSnippet",
 					"group": "1_modification"
 				}
 			]

@@ -37,6 +37,31 @@ export function newTemplate(filename: string, source:string) {
 
 }
 
+export function newSnippet(name:string, txt: string) {
+  const templateDirPath:string = getInstalledExtensionPath()
+  if(!isExist(templateDirPath)) {
+    cp.execSync(`mkdir -p ${templateDirPath}`)
+  }
+  const templatePath = `${templateDirPath}/${name}.snippet`
+  if(isExist(templatePath)) {
+    vscode.window.showWarningMessage('已存在同名代码片段，是否覆盖', { modal: true }, 'yes').then(pick =>{
+      if (pick === 'yes') {
+        newSuccess()
+       } else {
+          vscode.window.showInformationMessage("已存在同名代码片段,换一个试试？");
+       }
+    });
+  } else {
+    newSuccess()
+  }
+
+  function newSuccess() {
+    fs.writeFileSync(templatePath, txt, 'utf-8')
+    dbTransaction('add', `${name}.sinppet`)
+    vscode.window.showInformationMessage(`${name}代码片段保存成功！！！`)
+  }
+}
+
 export function getInstalledExtensionPath():string {
   const extensionPlugin = vscode.extensions.getExtension(config.extensionPath)
   if(!extensionPlugin) {
@@ -71,7 +96,8 @@ export function dbTransaction(type: string, key: string) {
   const dbPath = `${templateDirPath}/${config.dbFile}`
   let dbObj: any = {}
   if(isExist(dbPath)) {
-    const dbData = require(dbPath)
+    const dbData = fs.readFileSync(dbPath, 'utf-8')
+    console.log(typeof dbData)
     try {
       dbObj = typeof dbData === 'object'? dbData : JSON.parse(dbData)
     } catch (error) {
