@@ -1,9 +1,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import newJsFile from './packages/newJsFile';
-import newCssFile from './packages/newCssFile';
-import newSnippet from './packages/newSnippet'
+import newJsFile from './packages/saveJsFile';
+import newCssFile from './packages/saveCssFile';
+import newSnippet from './packages/saveSnippet';
+import useJsTemp from './packages/useJsTemplate'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -16,20 +17,24 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let newJsTemplate = vscode.commands.registerCommand('CopyPaste.newJsFile',async (uri) => {
+	let saveJsFile = vscode.commands.registerCommand('CopyPaste.newJsFile',async (uri) => {
 		newJsFile(uri)
 	});
 
 	let newCssTemplate = vscode.commands.registerCommand('CopyPaste.newCssFile', (uri) => {
 		newCssFile(uri)
-
 	});
 	let newMainSnipcode = vscode.commands.registerCommand('CopyPaste.newSnippet', () => {
 		newSnippet()
 	});
+
+	let useJsTemplate = vscode.commands.registerCommand('CopyPaste.newJsTemplate', (uri) => {
+		useJsTemp(uri)
+	})
+	context.subscriptions.push(useJsTemplate);
 	context.subscriptions.push(newMainSnipcode);
 	context.subscriptions.push(newCssTemplate);
-	context.subscriptions.push(newJsTemplate);
+	context.subscriptions.push(saveJsFile);
 }
 
 // this method is called when your extension is deactivated

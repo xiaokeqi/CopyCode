@@ -21,15 +21,27 @@
 		"commands": [
 			{
 				"command": "CopyPaste.newJsFile",
-				"title": "cc-存储为js模板"
+				"title": "存储为js模板"
 			},
 			{
 				"command": "CopyPaste.newCssFile",
-				"title": "cc-存储为css模板"
+				"title": "存储为css模板"
 			},
 			{
 				"command": "CopyPaste.newSnippet",
-				"title": "cc-存储为代码片段"
+				"title": "存储为代码片段"
+			},
+			{
+				"command": "CopyPaste.newJsTemplate",
+				"title": "使用JS模板"
+			},
+			{
+				"command": "CopyPaste.newCssTemplate",
+				"title": "使用CSS模板"
+			},
+			{
+				"command": "CopyPaste.newSnippetTemplate",
+				"title": "插入代码片段"
 			}
 		],
 		"menus": {
@@ -43,11 +55,23 @@
 					"when": "resourceLangId == css",
 					"command": "CopyPaste.newCssFile",
 					"group": "1_modification"
+				},
+				{
+					"command": "CopyPaste.newJsTemplate",
+					"group": "1_modification"
+				},
+				{
+					"command": "CopyPaste.newCssTemplate",
+					"group": "1_modification"
 				}
 			],
 			"editor/context": [
 				{
 					"command": "CopyPaste.newSnippet",
+					"group": "1_modification"
+				},
+				{
+					"command": "CopyPaste.newSnippetTemplate",
 					"group": "1_modification"
 				}
 			]

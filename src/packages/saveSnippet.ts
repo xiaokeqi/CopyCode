@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import {newSnippet} from './utils';
+import { newSnippet } from './utils';
 
 export default async function newMainSnippet() {
   const pwd = await vscode.window.showInputBox({
