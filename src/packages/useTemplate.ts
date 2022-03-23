@@ -4,8 +4,8 @@ import * as fs from 'fs'
 import * as npath from 'path'
 import { dbTransaction, isExist } from './utils'
 
-export default function useTemplate(uri:any, type:string) {
-  const {list, obj}:any = dbTransaction('getJS', '', type)
+export default function useTemplate(uri:any, type:string, key:string) {
+  const {list, obj}:any = dbTransaction(key, '', type)
   vscode.window.showQuickPick(list).then(res=> {
     if(!res) return
     const { path } = obj[res]

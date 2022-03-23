@@ -127,6 +127,7 @@ export function dbTransaction(type: string, key: string, fileType:string) {
       // 通用模板获取
       return getType('js')
     case 'getCss':
+      return getType('css')
       break;
   }
 

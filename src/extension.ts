@@ -29,10 +29,10 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	let useJsTemplate = vscode.commands.registerCommand('CopyPaste.useJsTemplate', (uri) => {
-		useTemplate(uri, 'js')
+		useTemplate(uri, 'js', 'getJS')
 	})
 	let useCssTemplate = vscode.commands.registerCommand('CopyPaste.useCssTemplate', (uri) => {
-		useTemplate(uri, 'css')
+		useTemplate(uri, 'css', 'getCss')
 	})
 	context.subscriptions.push(useCssTemplate);
 	context.subscriptions.push(useJsTemplate);
