@@ -18,18 +18,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
 	let saveJsFile = vscode.commands.registerCommand('CopyPaste.newJsFile',async (uri) => {
-		newJsFile(uri)
+		newJsFile(uri, 'js')
 	});
 
 	let newCssTemplate = vscode.commands.registerCommand('CopyPaste.newCssFile', (uri) => {
-		newCssFile(uri)
+		newCssFile(uri, 'css')
 	});
 	let newMainSnipcode = vscode.commands.registerCommand('CopyPaste.newSnippet', () => {
 		newSnippet()
 	});
 
 	let useJsTemplate = vscode.commands.registerCommand('CopyPaste.newJsTemplate', (uri) => {
-		useJsTemp(uri)
+		useJsTemp(uri, 'js')
 	})
 	context.subscriptions.push(useJsTemplate);
 	context.subscriptions.push(newMainSnipcode);

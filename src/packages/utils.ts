@@ -8,7 +8,7 @@ const config = require('./config.json')
  * @param source 以哪个文件为基准新建模板
  * @returns 
  */
-export function newTemplate(filename: string, source:string) {
+export function newTemplate(filename: string, source:string, type: string) {
   const templateDirPath:string = getInstalledExtensionPath()
   if(!isExist(templateDirPath)) {
     cp.execSync(`mkdir -p ${templateDirPath}`)
@@ -20,18 +20,18 @@ export function newTemplate(filename: string, source:string) {
   if(isExist(templatePath)) {
     vscode.window.showWarningMessage('已存在同名模板，是否覆盖', { modal: true }, 'yes').then(pick =>{
       if (pick === 'yes') {
-        newSuccess()
+        newSuccess(type)
        } else {
           vscode.window.showInformationMessage("已存在同名模板,换一个试试？");
        }
     });
   } else {
-    newSuccess()
+    newSuccess(type)
   }
 
-  function newSuccess() {
+  function newSuccess(type:string) {
     fs.writeFileSync(templatePath, sourceContent, 'utf-8')
-    dbTransaction('add', `${filename}${ext}`)
+    dbTransaction('add', `${filename}${ext}`, type)
     vscode.window.showInformationMessage(`${filename}模板保存成功！！！`)
   }
 
@@ -57,7 +57,7 @@ export function newSnippet(name:string, txt: string) {
 
   function newSuccess() {
     fs.writeFileSync(templatePath, txt, 'utf-8')
-    dbTransaction('add', `${name}.sinppet`)
+    dbTransaction('add', `${name}.snippet`, 'snippet')
     vscode.window.showInformationMessage(`${name}代码片段保存成功！！！`)
   }
 }
@@ -91,13 +91,12 @@ export function isExist(path: string) {
  * 查看所有：all
  * @param key 操作某个文件
  */
-export function dbTransaction(type: string, key: string) {
+export function dbTransaction(type: string, key: string, fileType:string) {
   const templateDirPath:string = getInstalledExtensionPath()
   const dbPath = `${templateDirPath}/${config.dbFile}`
   let dbObj: any = {}
   if(isExist(dbPath)) {
     const dbData = fs.readFileSync(dbPath, 'utf-8')
-    console.log(typeof dbData)
     try {
       dbObj = typeof dbData === 'object'? dbData : JSON.parse(dbData)
     } catch (error) {
@@ -112,8 +111,10 @@ export function dbTransaction(type: string, key: string) {
           name: key,
           path: `${templateDirPath}/${key}`,
           relate: '',
-          count: 0
+          count: 0,
+          type: fileType
         }
+        fs.writeFileSync(dbPath, JSON.stringify(dbObj, null, 4), 'utf-8')
       }
       break;
     case 'update':
@@ -122,9 +123,26 @@ export function dbTransaction(type: string, key: string) {
       break;
     case 'move':
       break;
-    case 'get':
+    case 'getJS':
+      // 通用模板获取
+      return getType('js')
+    case 'getCss':
       break;
   }
-  fs.writeFileSync(dbPath, JSON.stringify(dbObj, null, 4), 'utf-8')
+
+  function getType(typeName: string, type?: string) {
+      let filter = []
+      let filterObj:any = {}
+      for(let key in dbObj) {
+        if(dbObj[key].type === typeName) {
+          filter.push(key)
+          filterObj[key] = dbObj[key]
+        }
+      }
+      return {
+        list: filter,
+        obj: filterObj
+      }
+  }
 
 }
