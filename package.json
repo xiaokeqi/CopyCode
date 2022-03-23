@@ -32,11 +32,11 @@
 				"title": "存储为代码片段"
 			},
 			{
-				"command": "CopyPaste.newJsTemplate",
+				"command": "CopyPaste.useJsTemplate",
 				"title": "使用JS模板"
 			},
 			{
-				"command": "CopyPaste.newCssTemplate",
+				"command": "CopyPaste.useCssTemplate",
 				"title": "使用CSS模板"
 			},
 			{
@@ -57,11 +57,11 @@
 					"group": "1_modification"
 				},
 				{
-					"command": "CopyPaste.newJsTemplate",
+					"command": "CopyPaste.useJsTemplate",
 					"group": "1_modification"
 				},
 				{
-					"command": "CopyPaste.newCssTemplate",
+					"command": "CopyPaste.useCssTemplate",
 					"group": "1_modification"
 				}
 			],

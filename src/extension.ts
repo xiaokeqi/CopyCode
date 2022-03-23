@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import newJsFile from './packages/saveJsFile';
 import newCssFile from './packages/saveCssFile';
 import newSnippet from './packages/saveSnippet';
-import useJsTemp from './packages/useJsTemplate'
+import useTemplate from './packages/useTemplate'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -28,9 +28,13 @@ export function activate(context: vscode.ExtensionContext) {
 		newSnippet()
 	});
 
-	let useJsTemplate = vscode.commands.registerCommand('CopyPaste.newJsTemplate', (uri) => {
-		useJsTemp(uri, 'js')
+	let useJsTemplate = vscode.commands.registerCommand('CopyPaste.useJsTemplate', (uri) => {
+		useTemplate(uri, 'js')
 	})
+	let useCssTemplate = vscode.commands.registerCommand('CopyPaste.useCssTemplate', (uri) => {
+		useTemplate(uri, 'css')
+	})
+	context.subscriptions.push(useCssTemplate);
 	context.subscriptions.push(useJsTemplate);
 	context.subscriptions.push(newMainSnipcode);
 	context.subscriptions.push(newCssTemplate);
