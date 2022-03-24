@@ -11,10 +11,7 @@
 	],
 	"publisher": "lidandan",
 	"activationEvents": [
-		"*",
-		"onCommand:CopyPaste.newJsFile",
-		"onCommand:CopyPaste.newCssFile",
-		"onCommand:CopyPaste.newSnippet"
+		"*"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -40,8 +37,8 @@
 				"title": "使用CSS模板"
 			},
 			{
-				"command": "CopyPaste.newSnippetTemplate",
-				"title": "插入代码片段"
+				"command": "CopyPaste.useSnippet",
+				"title": "使用代码片段"
 			}
 		],
 		"menus": {
@@ -71,7 +68,7 @@
 					"group": "1_modification"
 				},
 				{
-					"command": "CopyPaste.newSnippetTemplate",
+					"command": "CopyPaste.useSnippet",
 					"group": "1_modification"
 				}
 			]

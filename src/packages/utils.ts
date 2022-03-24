@@ -128,7 +128,8 @@ export function dbTransaction(type: string, key: string, fileType:string) {
       return getType('js')
     case 'getCss':
       return getType('css')
-      break;
+    case 'getSnippet':
+        return getType('snippet')
   }
 
   function getType(typeName: string, type?: string) {
