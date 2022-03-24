@@ -39,6 +39,10 @@
 			{
 				"command": "CopyPaste.useSnippet",
 				"title": "使用代码片段"
+			},
+			{
+				"command": "CopyPaste.templateManage",
+				"title": "模板管理"
 			}
 		],
 		"menus": {
@@ -60,6 +64,10 @@
 				{
 					"command": "CopyPaste.useCssTemplate",
 					"group": "1_modification"
+				},
+				{
+					"command": "CopyPaste.templateManage",
+					"group": "1_modification"
 				}
 			],
 			"editor/context": [
@@ -69,6 +77,10 @@
 				},
 				{
 					"command": "CopyPaste.useSnippet",
+					"group": "1_modification"
+				},
+				{
+					"command": "CopyPaste.templateManage",
 					"group": "1_modification"
 				}
 			]
