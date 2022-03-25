@@ -5,7 +5,8 @@ import newJsFile from './components/saveJsFile';
 import newCssFile from './components/saveCssFile';
 import newSnippet from './components/saveSnippet';
 import useTemplate from './components/useTemplate';
-import useSnippetTemp from './components/useSnipcodeTemplate'
+import useSnippetTemp from './components/useSnipcodeTemplate';
+import openManage from './components/templateManage'
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -41,6 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let showManagePage = vscode.commands.registerCommand('CopyPaste.templateManage', () => {
 		console.log('后台管理')
+		openManage(context)
 	})
 
 	context.subscriptions.push(showManagePage);

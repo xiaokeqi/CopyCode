@@ -91,7 +91,7 @@ export function isExist(path: string) {
  * 查看所有：all
  * @param key 操作某个文件
  */
-export function dbTransaction(type: string, key: string, fileType:string) {
+export function dbTransaction(type: string, key: string, fileType?:string) {
   const templateDirPath:string = getInstalledExtensionPath()
   const dbPath = `${templateDirPath}/${config.dbFile}`
   let dbObj: any = {}
@@ -123,6 +123,12 @@ export function dbTransaction(type: string, key: string, fileType:string) {
       break;
     case 'move':
       break;
+    case 'getAll': 
+      const list = []
+      for(let key in dbObj) {
+       list.push(dbObj[key])
+      }
+      return list
     case 'getJS':
       // 通用模板获取
       return getType('js')

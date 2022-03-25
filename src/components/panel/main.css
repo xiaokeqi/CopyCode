@@ -1,0 +1,15 @@
+
+.main-content table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #fff;
+}
+
+.main-content table td {
+  border: 1px solid #fff;
+  word-break: break-all;
+  min-height: 40px;
+  text-align: center;
+  padding: 6px;
+}
